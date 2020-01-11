@@ -31,17 +31,7 @@ class AdderForm extends React.Component {
 
   render() {
     return (
-      // <form onSubmit={this.mySubmitHandler}>
-      //   <h1>Answer: {this.state.sum}</h1>
-      //   <p>Calculate the sum of two number</p>
-      //   <input
-      //     type='text'
-      //   />
-      //   <input
-      //     type='submit'
-      //   />
-      // </form>
-      <div>
+      <div className="App">
         <h1>Two Numbers Adder</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
