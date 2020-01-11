@@ -1,26 +1,64 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class AdderForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstNum: 0,
+      secondNum: 0,
+      sum: 0
+    };
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    var a = Number(this.state.firstNum);
+    var b = Number(this.state.secondNum);
+    var c = a + b;
+    this.setState({ sum: c });
+  }
+
+  handleFirstNumChange = (event) => {
+    this.setState({firstNum: event.target.value});
+  }
+
+
+  handleSecondNumChange = (event) => {
+    this.setState({secondNum: event.target.value});
+  }
+
+  render() {
+    return (
+      // <form onSubmit={this.mySubmitHandler}>
+      //   <h1>Answer: {this.state.sum}</h1>
+      //   <p>Calculate the sum of two number</p>
+      //   <input
+      //     type='text'
+      //   />
+      //   <input
+      //     type='submit'
+      //   />
+      // </form>
+      <div>
+        <h1>Two Numbers Adder</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            First Number:
+<input type="number" onChange={this.handleFirstNumChange} />
+          </label>
+          <br></br>
+          <label>
+            Second Number:
+<input  type="number" onChange={this.handleSecondNumChange} />
+          </label>
+        </form>
+        <button onClick={this.handleSubmit}>Add</button>
+        <h1 id="answer">Answer: {this.state.sum} </h1>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default AdderForm;
